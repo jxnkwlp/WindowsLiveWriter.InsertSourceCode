@@ -46,7 +46,6 @@ namespace Wuliping.WindowsLiveWriter.InsertSourceCode
         void Load_Language()
         {
             var langs = this.PrettifyCode.Language.GetLanguageList();
-            langs.Insert(0, "");
 
             cb_language.DataSource = langs;
         }

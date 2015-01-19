@@ -148,14 +148,12 @@
             this.Controls.Add(this.btn_ok);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "CodeForm";
             this.Padding = new System.Windows.Forms.Padding(8);
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "InsertCode";
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);

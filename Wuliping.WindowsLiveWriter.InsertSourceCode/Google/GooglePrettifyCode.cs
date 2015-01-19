@@ -7,30 +7,20 @@ namespace Wuliping.WindowsLiveWriter.InsertSourceCode
     {
         public string Prettify(string language, string code, PrettifyCodeOption option)
         {
-            string lang = language;
-            if (!string.IsNullOrEmpty(language))
-                lang = this.Language.GetLanguageList().First(t => t.ToLower() == language.ToLower());
-
-            string css = "prettyprint ";
-            if (option.ShowLineNumber && option.LineNumberStart != 1)
-            {
-                css = css + string.Format("linenums:{0} ", option.LineNumberStart);
-            }
-            else
-            {
-                css = css + "linenums ";
-            }
-
-            if (!string.IsNullOrEmpty(lang))
-            {
-                css = css + string.Format("lang-{0} ", lang);
-            }
+            string lang = this.Language.GetLanguageList().First(t => t.ToLower() == language.ToLower());
 
             StringBuilder sb = new StringBuilder();
+            if (option.ShowLineNumber)
+            {
+                if (option.LineNumberStart != 1)
+                    sb.AppendLine(string.Format("<pre class=\"prettyprint linenums:{1} lang-{0}\">", lang, option.LineNumberStart));
+                else
+                    sb.AppendLine(string.Format("<pre class=\"prettyprint linenums lang-{0}\">", lang));
+            }
+            else
+                sb.AppendLine(string.Format("<pre class=\"prettyprint lang-{0}\">", lang));
 
-            sb.AppendLine(string.Format("<pre class=\"{0}\">", css));
-
-            sb.AppendLine(code);
+            sb.Append(code);
 
             sb.AppendLine("</pre>");
 
